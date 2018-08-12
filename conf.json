@@ -1,7 +1,7 @@
 {
     "sqloption":{
         "user":"misa",
-        "password":"newegg1234",
+        "password":"****",
         "server":"localhost\\SQLEXPRESS",
         "database":"mydb",
         "prot":1433,
