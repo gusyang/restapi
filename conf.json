@@ -1,0 +1,48 @@
+{
+    "sqloption":{
+        "user":"misa",
+        "password":"newegg1234",
+        "server":"localhost\\SQLEXPRESS",
+        "database":"mydb",
+        "prot":1433,
+        "options": {
+            "encrypt": false 
+        }
+    },
+    "algorithm":"aes-256-ctr",
+    "seckey":"Newegg@0oO2018`",
+    "sqlemailquery":"SELECT TOP 1 Enable FROM dbo.promotiongroup WITH (NOLOCK) WHERE EmailAddress = @email and CountryCode = @countrycode",
+    "sqloptin":"IF NOT EXISTS(SELECT TOP 1 1 FROM dbo.promotiongroup WITH (NOLOCK) WHERE EmailAddress = @email and CountryCode = 'USA') INSERT INTO dbo.promotiongroup(EmailAddress,NickName,Reserved1) VALUES(@email, @nickname,@source)",
+    "logconf":{
+        "appenders": {
+            "everything": {
+                "type": "file",
+                "filename": "logs/info.log",
+                "maxLogSize": 4485760,
+                "backups": 3, 
+                "compress": true
+            },
+            "emergencies": {
+                "type": "file",
+                "filename": "logs/error.log",
+                "maxLogSize": 4485760,
+                "backups": 3,
+                "compress": true
+            },
+            "just-errors": {
+                "type": "logLevelFilter",
+                "appender": "emergencies",
+                "level": "error"
+            }
+        },
+        "categories": {
+            "default": {
+                "appenders": [
+                    "just-errors",
+                    "everything"
+                ],
+                "level": "debug"
+            }
+        }
+    }
+}
